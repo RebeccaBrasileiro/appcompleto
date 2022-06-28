@@ -1,8 +1,8 @@
 import React from "react";
 import { createDrawerNavigator } from "@react-navigation/drawer";
-import { ChatScreen, PerfilScreen, SairScreen } from "../screens";
+import { ChatScreen, PerfilScreen,MapScreen, SairScreen } from "../screens";
 import colors from "../styles/colors";
-import { Ionicons } from "@expo/vector-icons";
+import { Ionicons,Feather } from "@expo/vector-icons";
 
 const Drawer = createDrawerNavigator();
 
@@ -33,6 +33,15 @@ export default function DrawerNavigation() {
                 options={{
                     drawerIcon: () => (
                         <Ionicons name="chatbubbles" size={24} color={colors.white} />
+                    ),
+                }}
+            />
+            <Drawer.Screen
+                name="Map"
+                component={MapScreen}
+                options={{
+                    drawerIcon: () => (
+                        <Feather name="map-pin" size={24} color={colors.white} />
                     ),
                 }}
             />
