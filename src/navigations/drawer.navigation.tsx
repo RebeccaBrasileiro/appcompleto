@@ -1,6 +1,6 @@
 import React from "react";
 import { createDrawerNavigator } from "@react-navigation/drawer";
-import { ChatScreen, PerfilScreen, MapScreen, SairScreen, QrCodeScreen, CameraScreen } from "../screens";
+import { ChatScreen, PerfilScreen, MapScreen, SairScreen, QrCodeScreen, CameraScreen, ArquivoScreen } from "../screens";
 import colors from "../styles/colors";
 import { Ionicons, Feather, MaterialCommunityIcons } from "@expo/vector-icons";
 
@@ -77,6 +77,20 @@ export default function DrawerNavigation() {
                     drawerIcon: () => (
                         <MaterialCommunityIcons
                             name="camera"
+                            size={24}
+                            color={colors.white}
+                        />
+                    ),
+                }}
+            />
+             <Drawer.Screen
+                name="Arquivo"
+                component={ArquivoScreen}
+                options={{
+                    drawerLabel: "Arquivos",
+                    drawerIcon: () => (
+                        <MaterialCommunityIcons
+                            name="file-account"
                             size={24}
                             color={colors.white}
                         />
