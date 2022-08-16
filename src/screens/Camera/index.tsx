@@ -34,7 +34,7 @@ export default function App() {
         setCapturedImage(photo);
     };
     const __savePhoto = async () => {
-        const permission = await MediaLibrary.requestPermissionAsync();
+        const permission = await MediaLibrary.requestPermissionsAsync();
         if (permission.granted) {
             try {
                 const asset = await MediaLibrary.createAssetAsync(capturedImage.uri);
@@ -58,9 +58,74 @@ export default function App() {
                 <View style={styles.startOver}>
                     <TouchableOpacity
                         onPress={() => setStartOver(false)}
-                        style={styles.buttonStartOver}
+                        style={styles.buttonstartOver}
                     >
                         <Text style={styles.textStartOver}>Tirar uma foto</Text>
                     </TouchableOpacity>
                 </View>
             ) : (
+                    <View style={styles.container}>
+                        {previewVisible ? (
+                            <ImageBackground
+                                source={{ uri: capturedImage && capturedImage.uri }}
+                                style={styles.container}
+                            >
+                                <View style={styles.collumnPreviewVisible}>
+                                    <View style={styles.rowPreviewVisible}>
+                                        <TouchableOpacity
+                                            onPress={() => setPreviewVisible(false)}
+                                            style={styles.buttonPreviewVisible}
+                                        >
+                                            <Text style={styles.textPreviewVisible}>nova foto</Text>
+                                        </TouchableOpacity>
+                                        <TouchableOpacity
+                                            onPress={__savePhoto}
+                                            style={styles.buttonSavePhoto}
+                                        >
+                                            <Text style={styles.textPreviewVisible}>salvar a foto</Text>
+                                        </TouchableOpacity>
+                                    </View>
+                                </View>
+                            </ImageBackground>
+                        ) : (
+                                <Camera
+                                    style={styles.container}
+                                    type={type}
+                                    ref={(r) => {
+                                        if (r) camera = r;
+                                    }}
+                                >
+                                    <View style={styles.buttonTop}>
+                                        <View style={styles.buttonTopPosition}>
+                                            <TouchableOpacity onPress={__closeCamera}>
+                                                <Text style={styles.textClose}>X</Text>
+                                            </TouchableOpacity>
+                                        </View>
+                                        <TouchableOpacity
+                                            style={styles.buttonFlip}
+                                            onPress={() => {
+                                                setType(
+                                                    type === Camera.Constants.Type.back
+                                                        ? Camera.Constants.Type.front
+                                                        : Camera.Constants.Type.back
+                                                );
+                                            }}
+                                        >
+                                            <Text style={styles.textFlip}> Inverter </Text>
+                                        </TouchableOpacity>
+                                        <View style={styles.viewTakePicture}>
+                                            <View style={styles.positionTakePicture}>
+                                                <TouchableOpacity
+                                                    onPress={__takePicture}
+                                                    style={styles.buttonTakePicture}
+                                                />
+                                            </View>
+                                        </View>
+                                    </View>
+                                </Camera>
+                            )}
+                    </View>
+                )}
+        </View>
+    );
+}
