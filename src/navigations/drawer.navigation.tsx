@@ -1,6 +1,6 @@
 import React from "react";
 import { createDrawerNavigator } from "@react-navigation/drawer";
-import { ChatScreen, PerfilScreen, MapScreen, SairScreen, QrCodeScreen } from "../screens";
+import { ChatScreen, PerfilScreen, MapScreen, SairScreen, QrCodeScreen, CameraScreen } from "../screens";
 import colors from "../styles/colors";
 import { Ionicons, Feather, MaterialCommunityIcons } from "@expo/vector-icons";
 
@@ -63,6 +63,20 @@ export default function DrawerNavigation() {
                     drawerIcon: () => (
                         <MaterialCommunityIcons
                             name="qrcode-scan"
+                            size={24}
+                            color={colors.white}
+                        />
+                    ),
+                }}
+            />
+            <Drawer.Screen
+                name="Camera"
+                component={CameraScreen}
+                options={{
+                    drawerLabel: "Câmera",
+                    drawerIcon: () => (
+                        <MaterialCommunityIcons
+                            name="camera"
                             size={24}
                             color={colors.white}
                         />
