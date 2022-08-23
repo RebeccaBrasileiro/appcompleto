@@ -21,8 +21,12 @@ const styles = StyleSheet.create({
   },
   icon: {
     fontSize: 24,
-    padding: 5
-  }
+    padding: 5,
+  },
+  img: {
+    width: 100,
+    height: 100,
+    }
 })
 
 export default styles;
