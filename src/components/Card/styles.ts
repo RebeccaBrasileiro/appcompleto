@@ -17,8 +17,15 @@ const styles = StyleSheet.create({
     backgroundColor: colors.third,
     margin: 5,
     borderRadius: 5,
-    padding: 5
-  }
+    padding: 10
+  },
+  msg:{
+
+  },
+  img:{
+    width: 100,
+    height: 100,
+  },
 })
 
 export default styles
