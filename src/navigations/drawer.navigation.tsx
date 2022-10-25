@@ -1,9 +1,9 @@
 import React from "react";
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import ChatNavigation from "./chat.navigation";
-import { ChatScreen, PerfilScreen, MapScreen, SairScreen, QrCodeScreen, CameraScreen, ArquivoScreen, VideoAudioScreen, AcelerometroScreen } from "../screens";
+import { ChatScreen, PerfilScreen, MapScreen, SairScreen, QrCodeScreen, CameraScreen, ArquivoScreen, VideoAudioScreen, AcelerometroScreen, PedometroScreen } from "../screens";
 import colors from "../styles/colors";
-import { Ionicons, Feather, MaterialCommunityIcons, FontAwesome } from "@expo/vector-icons";
+import { Ionicons, Feather, MaterialCommunityIcons, FontAwesome, Foundation } from "@expo/vector-icons";
 
 const Drawer = createDrawerNavigator();
 
@@ -128,6 +128,20 @@ export default function DrawerNavigation() {
                     ),
                 }}
             />
-         </Drawer.Navigator>
+            <Drawer.Screen
+                name="Pedometro"
+                component={PedometroScreen}
+                options={{
+                    drawerLabel: "Pedômetro",
+                    drawerIcon: () => (
+                        <Foundation
+                            name="foot"
+                            size={24}
+                            color={colors.white}
+                        />
+                    ),
+                }}
+            />
+        </Drawer.Navigator>
     )
 }
